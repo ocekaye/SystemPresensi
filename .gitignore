@@ -44,3 +44,4 @@ dist
 #IDE
 .idea
 
+.idea/workspace.xml
