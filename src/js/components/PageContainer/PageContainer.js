@@ -11,7 +11,8 @@ export default class PageContainer extends React.Component {
             <div className="page-container">
                 <div className="page-content">
                     <Sidebar/>
-                    <Content/>
+                    {this.props.children}
+                    {/*<Content/>*/}
                 </div>
             </div>
         );

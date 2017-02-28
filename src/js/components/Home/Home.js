@@ -2,9 +2,7 @@
  * Created by Hinata on 2/26/2017.
  */
 import React from 'react';
-import {Link} from 'react-router';
-import Navbar from '../Navbar';
-import PageContainer from '../PageContainer';
+import Content from '../Content';
 
 export default class Home extends React.Component {
     constructor() {
@@ -12,10 +10,7 @@ export default class Home extends React.Component {
     }
     render() {
         return (
-            <div>
-                <Navbar/>
-                <PageContainer/>
-            </div>
+           <Content/>
         );
     }
 }
