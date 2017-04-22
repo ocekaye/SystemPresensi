@@ -2,6 +2,7 @@
  * Created by Hinata on 2/28/2017.
  */
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class MenuManage extends React.Component {
     render() {
@@ -11,7 +12,9 @@ export default class MenuManage extends React.Component {
                 <li>
                     <a><i className="icon-users4"></i> <span>Daftar Siswa</span></a>
                     <ul>
-                        <li><a><i className="icon-list2"></i>Tampil Semua</a></li>
+                        <li>
+                            <a href="http://localhost:8080/#/"><i className="icon-list2"></i>Tampil Semua</a>
+                        </li>
                         <li><a><i className="icon-plus-circle2"></i>Tambah Siswa</a></li>
                     </ul>
                 </li>

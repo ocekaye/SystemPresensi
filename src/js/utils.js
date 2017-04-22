@@ -1,7 +1,7 @@
 
 import WebStorage from 'react-webstorage'
 
-export const API_BASE = 'http://api.server.com/api/';
+export const API_BASE = 'http://localhost:3000/api/';
 
 export const webStorage = new WebStorage(window.localStorage ||
     window.sessionStorage /* or poly-fill thereof */

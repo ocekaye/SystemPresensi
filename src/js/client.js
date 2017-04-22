@@ -8,6 +8,8 @@ import store from './store';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import PageHeader from './components/PageHeader';
+import DaftarSiswa from './components/DaftarSiswa';
+import Nilai from './components/Nilai';
 
 const app = document.getElementById('app');
 
@@ -19,10 +21,13 @@ ReactDOM.render(
             <Route path='/' component={Navbar}>
                 <IndexRoute component={Home} />
                 <Route path='home' component={Home} />
+                <Route path='nilai/:parm' component={Nilai} />
                 <Route path='blank' />
                 <Route path='header' component={PageHeader} />
+                <Route path='daftar-siswa' component={DaftarSiswa} />
             </Route>
             <Home />
         </Router>
     </Provider>
     , app);
+
