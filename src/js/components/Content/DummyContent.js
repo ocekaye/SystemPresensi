@@ -33,7 +33,7 @@ export default class DummyContent extends React.Component {
         ];
         return (
             <div>
-               <PageHeader/>
+               <PageHeader icon="icon-home4 position-left" text1="Dashboard" text2="Guru"/>
 
                 {/*<!-- Content area -->*/}
                 <div className="content">

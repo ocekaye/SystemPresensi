@@ -6,7 +6,6 @@ import {Link} from 'react-router'
 
 export default class MenuItem extends React.Component {
     render() {
-        console.log(this.props);
         return (
             <li>
                 <a href={"#/"+this.props.link}> <i className={this.props.icon} />{this.props.name}</a>

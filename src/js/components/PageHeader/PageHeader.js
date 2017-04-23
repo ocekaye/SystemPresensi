@@ -9,7 +9,8 @@ export default class PageHeader extends React.Component {
         <div className="page-header page-header-default">
             <div className="page-header-content">
                 <div className="page-title">
-                    <h4><i className="icon-home4 position-left"></i> <span className="text-semibold">Dashboard</span> - Guru</h4>
+                    {/*<h4><i className="icon-home4 position-left"></i> <span className="text-semibold">Dashboard</span> - Guru</h4>*/}
+                    <h4><i className={this.props.icon} /> <span className="text-semibold">{this.props.text1}</span> {this.props.text2 ? " - "+this.props.text2 : ""}</h4>
                 </div>
 
                 <div className="heading-elements">

@@ -11,8 +11,8 @@ import PageHeader from './components/PageHeader';
 import DaftarSiswa from './components/DaftarSiswa';
 import Nilai from './components/Nilai';
 
-const app = document.getElementById('app');
 
+const app = document.getElementById('app');
 
 ReactDOM.render(
     <Provider store={store}>

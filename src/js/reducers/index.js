@@ -1,8 +1,9 @@
+import { combineReducers } from "redux"
 
-import {combineReducers} from 'redux'
-
-import search from './search-reducer'
+import tweets from "./tweetsReducer"
+import user from "./userReducer"
 
 export default combineReducers({
-    search
-});
+    tweets,
+    user,
+})
