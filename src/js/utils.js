@@ -7,6 +7,12 @@ export const webStorage = new WebStorage(window.localStorage ||
     window.sessionStorage /* or poly-fill thereof */
 );
 
+export const baseUrl = 'http://localhost:8080';
+
+export function isLogin() {
+    return webStorage.getItem('token') ? true : false;
+}
+
 export function swipeDetect(el, callback){
 
     var touchsurface = el,

@@ -54,8 +54,8 @@ export default class NavMain extends React.Component {
                     <ul className="navigation navigation-main navigation-accordion">
 
                         {/*main*/}
-                        <li className="navigation-header"><span>Main</span> <i className="icon-menu" title="Main pages"></i></li>
-                        <li className={this.state.dashboardActive} onClick={() => this.onClickDashboard(this.state.dashboardActive)}><a><i className="icon-home4"></i> <span>Dashboard</span></a></li>
+                        <li className="navigation-header"><span>Main</span> <i className="icon-menu" title="Main pages"/></li>
+                        <li className={this.state.dashboardActive} onClick={() => this.onClickDashboard(this.state.dashboardActive)}><a><i className="icon-home4"/> <span>Dashboard</span></a></li>
                         <MenuItemParent link="#" icon="icon-stack-star" name="Nilai Siswa" >
                             <MenuItem icon="icon-bell2" name="Nilai Harian" link="nilai/harian"/>
                             <MenuItem icon="icon-calendar" name="Nilai Tugas"link="nilai/tugas" />
@@ -109,7 +109,7 @@ export default class NavMain extends React.Component {
                         {/*/main*/}
 
                         {/*manage*/}
-                        <li className="navigation-header"><span>Manage</span> <i className="icon-menu" title="Manage"></i></li>
+                        <li className="navigation-header"><span>Manage</span> <i className="icon-menu" title="Manage"/></li>
                         <li>
                             <a><i className="icon-users4"></i> <span>Daftar Siswa</span></a>
                             <ul>
@@ -134,7 +134,7 @@ export default class NavMain extends React.Component {
                         {/*/manage*/}
 
                         {/*info*/}
-                        <li className="navigation-header"><span>Info</span> <i className="icon-menu" title="Info"></i></li>
+                        <li className="navigation-header"><span>Info</span> <i className="icon-menu" title="Info"/></li>
                         <li>
                             <a href="#"><i className="icon-calendar52"></i> <span>Jadwal</span></a>
                         </li>

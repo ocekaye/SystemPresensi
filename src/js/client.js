@@ -10,6 +10,7 @@ import Home from './components/Home';
 import PageHeader from './components/PageHeader';
 import DaftarSiswa from './components/DaftarSiswa';
 import Nilai from './components/Nilai';
+import Login from './components/Login';
 
 
 const app = document.getElementById('app');
@@ -26,8 +27,8 @@ ReactDOM.render(
                 <Route path='header' component={PageHeader} />
                 <Route path='daftar-siswa' component={DaftarSiswa} />
             </Route>
-            <Home />
+            <Route path="/login" component={Login}/>
+            {/*<Home />*/}
         </Router>
     </Provider>
     , app);
-
