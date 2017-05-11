@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import axios from 'axios';
-import { API_BASE, webStorage } from '../../utils';
+import { API_BASE, webStorage, getAccount } from '../../utils';
 
 export default class UserProfile extends React.Component {
     constructor() {
@@ -15,20 +15,7 @@ export default class UserProfile extends React.Component {
 
     componentWillMount() {
         // const { params } = this.props;
-        this.loadProfile("58b6f11402c5d019f815a7ae");
-    }
-
-    loadProfile(id) {
-        let self = this;
-        axios.get(API_BASE + 'Gurus/' + id, {
-            headers: {'Authorization': /*webStorage.getItem('token')*/""}
-        }).then(function (response) {
-            self.setState({
-                profile: response.data
-            });
-        }).catch(function (error) {
-            console.error(error);
-        })
+        this.setState({profile: getAccount()});
     }
 
     render() {

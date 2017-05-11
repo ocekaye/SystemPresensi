@@ -13,6 +13,30 @@ export function isLogin() {
     return webStorage.getItem('token') ? true : false;
 }
 
+export function saveAccount(account) {
+    webStorage.setItem('id', account.id);
+    webStorage.setItem('username', account.username);
+    webStorage.setItem('nama', account.nama);
+    webStorage.setItem('alamat', account.alamat);
+    webStorage.setItem('desc', account.desc);
+    webStorage.setItem('image', account.image);
+    webStorage.setItem('email', account.email);
+}
+
+export function getAccount() {
+    let account = {
+        id: webStorage.getItem('id'),
+        username: webStorage.getItem('username'),
+        nama: webStorage.getItem('nama'),
+        alamat: webStorage.getItem('alamat'),
+        desc: webStorage.getItem('desc'),
+        image: webStorage.getItem('image'),
+        email: webStorage.getItem('email')
+    }
+    return account;
+
+}
+
 export function swipeDetect(el, callback){
 
     var touchsurface = el,

@@ -2,11 +2,19 @@
  * Created by Hinata on 2/28/2017.
  */
 import React from 'react';
-import {webStorage} from '../../utils';
+import {webStorage, getAccount} from '../../utils';
 import { withRouter } from 'react-router';
 
 @withRouter
 export default class DropdownProfile extends React.Component {
+    state = {
+        profile: {}
+    }
+    componentWillMount() {
+        this.setState({
+            profile: getAccount()
+        });
+    }
 
     logOut(){
         webStorage.removeItem('token');
@@ -14,11 +22,12 @@ export default class DropdownProfile extends React.Component {
     }
 
     render() {
+        const {profile} = this.state;
         return (
             <li className="dropdown dropdown-user">
                 <a className="dropdown-toggle" data-toggle="dropdown">
                     <img src="assets/images/users/1.png" alt="" />
-                    <span>Nama Guru</span>
+                    <span>{profile.nama}</span>
                     <i className="caret" />
                 </a>
 

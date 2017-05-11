@@ -136,7 +136,7 @@ export default class NavMain extends React.Component {
                         {/*info*/}
                         <li className="navigation-header"><span>Info</span> <i className="icon-menu" title="Info"/></li>
                         <li>
-                            <a href="#"><i className="icon-calendar52"></i> <span>Jadwal</span></a>
+                            <a href="#/jadwal"><i className="icon-calendar52" /> <span>Jadwal</span></a>
                         </li>
                         {/*/info*/}
                     </ul>

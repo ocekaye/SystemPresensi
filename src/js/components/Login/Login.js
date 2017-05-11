@@ -5,18 +5,22 @@ import React from 'react';
 import {webStorage} from '../../utils';
 import { withRouter } from 'react-router';
 import { connect } from "react-redux";
-import { checkLogin } from "../../actions/accountActions";
+import { checkLogin, login, getAccount } from "../../actions/accountActions";
 import { isLogin, baseUrl } from '../../utils';
 
 @withRouter
-
+@connect((state) => state)
 export default class Login extends React.Component {
 
     login(e){
         e.preventDefault();
-        webStorage.setItem('token', 'blablabalb');
-        window.open(baseUrl, "_self");
-        // this.props.router.go(baseUrl);
+        const {dispatch} =  this.props;
+        dispatch(login('guru1', '123')).then(function (id) {
+            console.log('login page', id);
+            dispatch(getAccount(id)).then(function () {
+                window.open(baseUrl, "_self");
+            });
+        });
     }
 
     render() {
