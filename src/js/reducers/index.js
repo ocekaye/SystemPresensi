@@ -5,6 +5,7 @@ import user from "./userReducer"
 import kelas from "./kelasReducer"
 import account from './accountReducer';
 import jadwal from './jadwalReducer';
+import tugas from './tugasReducer';
 
 export default combineReducers({
     tweets,
@@ -12,4 +13,5 @@ export default combineReducers({
     kelas,
     account,
     jadwal,
+    tugas,
 })

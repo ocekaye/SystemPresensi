@@ -1,24 +1,24 @@
 export default function reducer(state={
-    jadwal:[],
+    tugas:[],
     fetching: false,
     fetched: false,
     error: null,
   }, action) {
 
     switch (action.type) {
-        case "FETCH_JADWAL": {
+        case "FETCH_TUGAS": {
             state.fetching = true;
             return {...state}
         }
-        case "FETCH_JADWAL_REJECTED": {
+        case "FETCH_TUGAS_REJECTED": {
             state.fetching = false;
             state.error = action.payload;
             return {...state}
         }
-        case "FETCH_JADWAL_FULFILLED": {
+        case "FETCH_TUGAS_FULFILLED": {
             state.fetching = false;
             state.fetched = true;
-            state.jadwal = action.payload;
+            state.tugas = action.payload;
             return {...state}
         }
     }

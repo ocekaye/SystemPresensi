@@ -12,6 +12,7 @@ import DaftarSiswa from './components/DaftarSiswa';
 import Nilai from './components/Nilai';
 import Login from './components/Login';
 import Jadwal from './components/Jadwal';
+import Tugas from './components/Tugas';
 
 
 const app = document.getElementById('app');
@@ -28,6 +29,7 @@ ReactDOM.render(
                 <Route path='header' component={PageHeader} />
                 <Route path='daftar-siswa' component={DaftarSiswa} />
                 <Route path='jadwal' component={Jadwal} />
+                <Route path='tugas/all' component={Tugas} />
             </Route>
             <Route path="/login" component={Login}/>
             {/*<Home />*/}

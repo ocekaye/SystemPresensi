@@ -41,6 +41,7 @@ export default class NavMain extends React.Component {
         let mKelas = [];
         if(kelas.length){
              mKelas = kelas.map((SKelas) => <MenuItemParent icon="icon-home8" name={SKelas.desc}/>);
+            mKelas.unshift(<MenuItemParent icon="icon-home8" name='Semua' link="#/tugas/all"/>);
            /* mKelas = <MenuItemParentFetch
                 icon="icon-home8"
                 name={kelas[0].desc}
@@ -48,6 +49,7 @@ export default class NavMain extends React.Component {
                 api={this.getTugasApi(kelas[0].id)}/>*/
 
         }
+
         return (
             <div className="sidebar-category sidebar-category-visible">
                 <div className="category-content no-padding">
