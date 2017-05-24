@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory, browserHistory, withRouter } from 'react-router';
 
 import store from './store';
 
@@ -17,11 +17,23 @@ import Tugas from './components/Tugas';
 
 const app = document.getElementById('app');
 
+@withRouter
+class goIn extends React.Component{
+    componentWillMount(){
+        this.props.router.replace('/app/home');
+    }
+    render(){
+        return(<div></div>);
+    }
+
+}
+
 ReactDOM.render(
     <Provider store={store}>
 
         <Router history={hashHistory}>
-            <Route path='/' component={Navbar}>
+            <Route path='/' component={goIn} />
+            <Route path='/app' component={Navbar}>
                 <IndexRoute component={Home} />
                 <Route path='home' component={Home} />
                 <Route path='nilai/:parm' component={Nilai} />
@@ -29,7 +41,8 @@ ReactDOM.render(
                 <Route path='header' component={PageHeader} />
                 <Route path='daftar-siswa' component={DaftarSiswa} />
                 <Route path='jadwal' component={Jadwal} />
-                <Route path='tugas/all' component={Tugas} />
+                <Route path='tugas/all' component={Tugas} isAll={true}/>
+                <Route path='tugas/:id' component={Tugas} isAll={false}/>
             </Route>
             <Route path="/login" component={Login}/>
             {/*<Home />*/}

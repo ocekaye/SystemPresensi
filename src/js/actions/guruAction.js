@@ -28,3 +28,16 @@ export function getAllTugas() {
             });
     }
 }
+
+export function getAllTugasByKelas(id) {
+    return function(dispatch) {
+        dispatch({type: "FETCH_TUGAS"});
+        return axios.get(API_BASE+'Kelas/'+id+'/'+getAccount().id+'/tugas')
+            .then(function (response) {
+                console.log('tugas', response);
+                dispatch({type: "FETCH_TUGAS_FULFILLED", payload: response.data});
+            }).catch(function (err) {
+                dispatch({type: "FETCH_TUGAS_REJECTED", payload: err.data})
+            });
+    }
+}

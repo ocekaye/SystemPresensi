@@ -4,20 +4,36 @@
 import React from 'react';
 import PageHeader from '../PageHeader';
 import { connect } from "react-redux";
-import {getAllTugas} from '../../actions/guruAction';
+import { withRouter } from 'react-router';
+import {getAllTugas, getAllTugasByKelas} from '../../actions/guruAction';
 
+@withRouter
 @connect((state) => state)
 export default class Jadwal extends React.Component {
     state = {
-        tugas: []
+        tugas: [],
+        fetched: false,
     }
     componentWillMount() {
-        this.props.dispatch(getAllTugas());
+        console.log(this.props);
+        if(this.props.params.id){
+            this.props.dispatch(getAllTugasByKelas(this.props.params.id));
+        } else this.props.dispatch(getAllTugas());
     }
 
     componentWillReceiveProps(nextProps) {
         console.log('next prop tugas', nextProps);
-        this.setState({tugas: nextProps.tugas.tugas});
+        this.setState({
+            tugas: nextProps.tugas.tugas,
+            fetched: true
+        });
+        if (this.props.params.id == null && nextProps.params.id == null && !this.state.fetched){
+            this.props.dispatch(getAllTugas());
+        } else if (this.props.params.id != nextProps.params.id){
+            if(nextProps.params.id){
+                this.props.dispatch(getAllTugasByKelas(nextProps.params.id));
+            } else this.props.dispatch(getAllTugas());
+        }
     }
 
     render() {
@@ -55,7 +71,7 @@ export default class Jadwal extends React.Component {
                                         <thead>
                                         <tr>
                                             <th className="col-md-4">Nama Tugas</th>
-                                            <th className="col-md-4">Hari / Tanggal</th>
+                                            <th className="col-md-4">Mulai / Selesai</th>
                                             <th className="col-md-4">Kelas</th>
                                             <th className="col-md-4">Mapel</th>
                                         </tr>

@@ -8,6 +8,7 @@ import MenuInfo from './MenuInfo';
 import MenuItemParent from './item/MenuItemParent';
 import MenuItemParentFetch from './item/MenuItemParentFetch';
 import MenuItem from './item/MenuItem';
+
 import { connect } from "react-redux"
 import { fetchKelas } from "../../actions/kelasActions"
 
@@ -40,32 +41,24 @@ export default class NavMain extends React.Component {
         const { kelas } = this.props;
         let mKelas = [];
         if(kelas.length){
-             mKelas = kelas.map((SKelas) => <MenuItemParent icon="icon-home8" name={SKelas.desc}/>);
-            mKelas.unshift(<MenuItemParent icon="icon-home8" name='Semua' link="#/tugas/all"/>);
-           /* mKelas = <MenuItemParentFetch
-                icon="icon-home8"
-                name={kelas[0].desc}
-                id={kelas[0].id}
-                api={this.getTugasApi(kelas[0].id)}/>*/
-
+             mKelas = kelas.map((SKelas) => <MenuItem icon="icon-home8" name={SKelas.desc} to={"app/tugas/"+SKelas.id}/>);
+            mKelas.unshift(<MenuItem icon="icon-list2" name='Semua' to="app/tugas/all"/>);
         }
 
         return (
             <div className="sidebar-category sidebar-category-visible">
                 <div className="category-content no-padding">
                     <ul className="navigation navigation-main navigation-accordion">
-
-                        {/*main*/}
                         <li className="navigation-header"><span>Main</span> <i className="icon-menu" title="Main pages"/></li>
-                        <li className={this.state.dashboardActive} onClick={() => this.onClickDashboard(this.state.dashboardActive)}><a><i className="icon-home4"/> <span>Dashboard</span></a></li>
-                        <MenuItemParent link="#" icon="icon-stack-star" name="Nilai Siswa" >
-                            <MenuItem icon="icon-bell2" name="Nilai Harian" link="nilai/harian"/>
-                            <MenuItem icon="icon-calendar" name="Nilai Tugas"link="nilai/tugas" />
+                        <MenuItem icon="icon-home4" name="Dashboard" to="app/home"/>
+                        <MenuItemParent icon="icon-stack-star" name="Nilai Siswa" >
+                            <MenuItem icon="icon-bell2" name="Nilai Harian" to="app/nilai/harian"/>
+                            <MenuItem icon="icon-calendar" name="Nilai Tugas" to="app/nilai/tugas" />
                             <li className="navigation-divider" />
-                            <MenuItem icon="icon-calendar2" name="Nilai UTS" link="nilai/uts"/>
-                            <MenuItem icon="icon-calendar3" name="Nilai UAS" link="nilai/uas"/>
+                            <MenuItem icon="icon-calendar2" name="Nilai UTS" to="app/nilai/uts"/>
+                            <MenuItem icon="icon-calendar3" name="Nilai UAS" to="app/nilai/uas"/>
                         </MenuItemParent>
-                        <MenuItemParent link="#" icon="icon-stack-check" name="Presensi" >
+                        <MenuItemParent icon="icon-stack-check" name="Presensi" >
                             <MenuItemParent icon="icon-home8" name="Kelas 1" >
                                 <MenuItem icon="icon-book" name="Matematika" />
                                 <MenuItem icon="icon-book" name="B. Indonesia" />
@@ -86,31 +79,10 @@ export default class NavMain extends React.Component {
                             </MenuItemParent>
                         </MenuItemParent>
 
-                        <MenuItemParent link="#" icon="icon-clipboard2" name="Tugas" >
+                        <MenuItemParent icon="icon-clipboard2" name="Tugas" >
                             {mKelas}
-                            {/*<MenuItemParent icon="icon-home8" name="Kelas 1" >
-                                <MenuItem icon="icon-book" name="Matematika" />
-                                <MenuItem icon="icon-book" name="B. Indonesia" />
-                                <MenuItem icon="icon-book" name="IPA" />
-                                <MenuItem icon="icon-book" name="IPS" />
-                            </MenuItemParent>
-                            <MenuItemParent icon="icon-home8" name="Kelas 2" >
-                                <MenuItem icon="icon-book" name="Matematika" />
-                                <MenuItem icon="icon-book" name="B. Indonesia" />
-                                <MenuItem icon="icon-book" name="IPA" />
-                                <MenuItem icon="icon-book" name="IPS" />
-                            </MenuItemParent>
-                            <MenuItemParent icon="icon-home8" name="Kelas 3" >
-                                <MenuItem icon="icon-book" name="Matematika" />
-                                <MenuItem icon="icon-book" name="B. Indonesia" />
-                                <MenuItem icon="icon-book" name="IPA" />
-                                <MenuItem icon="icon-book" name="IPS" />
-                            </MenuItemParent>*/}
                         </MenuItemParent>
 
-                        {/*/main*/}
-
-                        {/*manage*/}
                         <li className="navigation-header"><span>Manage</span> <i className="icon-menu" title="Manage"/></li>
                         <li>
                             <a><i className="icon-users4"></i> <span>Daftar Siswa</span></a>
@@ -133,14 +105,8 @@ export default class NavMain extends React.Component {
                                 <li><a><i className="icon-plus-circle2"></i>Tambah Guru</a></li>
                             </ul>
                         </li>
-                        {/*/manage*/}
-
-                        {/*info*/}
                         <li className="navigation-header"><span>Info</span> <i className="icon-menu" title="Info"/></li>
-                        <li>
-                            <a href="#/jadwal"><i className="icon-calendar52" /> <span>Jadwal</span></a>
-                        </li>
-                        {/*/info*/}
+                        <MenuItem icon="icon-calendar52" name="Jadwal" to="app/jadwal"/>
                     </ul>
                 </div>
             </div>
