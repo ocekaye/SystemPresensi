@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PageHeader from '../PageHeader';
+import PageHeaderButton from '../PageHeader/PageHeaderButton';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router';
 import {getAllTugas, getAllTugasByKelas} from '../../actions/guruAction';
@@ -36,6 +37,10 @@ export default class Jadwal extends React.Component {
         }
     }
 
+    addNew(){
+        this.props.router.replace('tugas/create');
+    }
+
     render() {
         let jadwal = this.state.tugas.map(({nama, mulai, selesai, kelas, mapel}, i) => {
             return (<tr>
@@ -61,7 +66,9 @@ export default class Jadwal extends React.Component {
         });
         return (
             <div className="content-wrapper col-lg-12">
-                <PageHeader icon="icon-home4 position-left" text1="Tugas"/>
+                <PageHeader icon="icon-home4 position-left" text1="Tugas">
+                    <PageHeaderButton link="#/app/tugas/create" icon="icon-plus-circle2" iconColor="text-primary" text="New Tugas"/>
+                </PageHeader>
                 <div className="content">
                     <div className="panel panel-flat">
                         <div className="row">

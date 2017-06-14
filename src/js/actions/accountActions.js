@@ -28,11 +28,11 @@ export function login(username, password) {
 
 export function getAccount(id) {
   return function(dispatch) {
-    axios.get(API_BASE+'Gurus/'+id)
+    return axios.get(API_BASE+'Gurus/'+id)
         .then((response) => {
           console.log('getAccount', response);
           saveAccount(response.data);
-          return;
+          return (id);
         })
         .catch((err) => {
           console.log("LOGIN_REJECTED", err);

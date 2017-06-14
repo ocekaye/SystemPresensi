@@ -13,6 +13,7 @@ import Nilai from './components/Nilai';
 import Login from './components/Login';
 import Jadwal from './components/Jadwal';
 import Tugas from './components/Tugas';
+import CreateTugas from './components/Tugas/CreateTugas';
 
 
 const app = document.getElementById('app');
@@ -41,8 +42,12 @@ ReactDOM.render(
                 <Route path='header' component={PageHeader} />
                 <Route path='daftar-siswa' component={DaftarSiswa} />
                 <Route path='jadwal' component={Jadwal} />
-                <Route path='tugas/all' component={Tugas} isAll={true}/>
-                <Route path='tugas/:id' component={Tugas} isAll={false}/>
+                <Route path='tugas'>
+                    <Route path='all' component={Tugas} isAll={true}/>
+                    <Route path='create' component={CreateTugas}/>
+                    <Route path=':id' component={Tugas} isAll={false}/>
+
+                </Route>
             </Route>
             <Route path="/login" component={Login}/>
             {/*<Home />*/}

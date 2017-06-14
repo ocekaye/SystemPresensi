@@ -17,7 +17,7 @@ export default class Login extends React.Component {
         const {dispatch} =  this.props;
         dispatch(login('guru1', '123')).then(function (id) {
             console.log('login page', id);
-            dispatch(getAccount(id)).then(function () {
+            dispatch(getAccount(id)).then(function (id) {
                 window.open(baseUrl, "_self");
             });
         });

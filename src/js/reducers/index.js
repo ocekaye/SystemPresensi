@@ -6,6 +6,7 @@ import kelas from "./kelasReducer"
 import account from './accountReducer';
 import jadwal from './jadwalReducer';
 import tugas from './tugasReducer';
+import mapel from './mapelReducer';
 
 export default combineReducers({
     tweets,
@@ -14,4 +15,5 @@ export default combineReducers({
     account,
     jadwal,
     tugas,
+    mapel,
 })
