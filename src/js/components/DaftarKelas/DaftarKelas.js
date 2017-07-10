@@ -11,6 +11,7 @@ export default class DaftarKelas extends React.Component {
     return (
       <div>
         Daftar Kelas
+        
       </div>
 
     );
