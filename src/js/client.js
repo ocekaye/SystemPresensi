@@ -14,6 +14,9 @@ import Login from './components/Login';
 import Jadwal from './components/Jadwal';
 import Tugas from './components/Tugas';
 import CreateTugas from './components/Tugas/CreateTugas';
+import Presensi from './components/Presensi';
+import DaftarKelas from './components/DaftarKelas';
+
 
 
 const app = document.getElementById('app');
@@ -46,8 +49,16 @@ ReactDOM.render(
                     <Route path='all' component={Tugas} isAll={true}/>
                     <Route path='create' component={CreateTugas}/>
                     <Route path=':id' component={Tugas} isAll={false}/>
-
                 </Route>
+              <Route path='presensi' component={Presensi}/>
+              <Route path='kelas'>
+                    <Route path='tampil' component={DaftarKelas}/>
+                    <Route path='create' component={DaftarKelas}/>
+
+              </Route>
+
+
+
             </Route>
             <Route path="/login" component={Login}/>
             {/*<Home />*/}

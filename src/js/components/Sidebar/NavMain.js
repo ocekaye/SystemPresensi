@@ -83,6 +83,8 @@ export default class NavMain extends React.Component {
                             {mKelas}
                         </MenuItemParent>
 
+
+
                         <li className="navigation-header"><span>Manage</span> <i className="icon-menu" title="Manage"/></li>
                         <li>
                             <a><i className="icon-users4"></i> <span>Daftar Siswa</span></a>
@@ -91,13 +93,11 @@ export default class NavMain extends React.Component {
                                 <li><a><i className="icon-plus-circle2"></i>Tambah Siswa</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a><i className="icon-home8"> </i> <span>Daftar Kelas</span></a>
-                            <ul>
-                                <li><a><i className="icon-list2"></i>Tampil Semua</a></li>
-                                <li><a><i className="icon-plus-circle2"></i>Tambah Kelas</a></li>
-                            </ul>
-                        </li>
+                      <MenuItemParent icon="icon-home8" name="Daftar Kelas">
+                        <MenuItem icon="icon-list2" name="Tampilkan Semua" to="app/kelas/tampil"/>
+                        <MenuItem icon="icon-plus-circle2" name="Tambah Kelas "/>
+
+                      </MenuItemParent>
                         <li>
                             <a><i className="icon-users"></i> <span>Daftar Guru</span></a>
                             <ul>

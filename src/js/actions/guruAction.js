@@ -6,7 +6,7 @@ import {API_BASE, webStorage, saveAccount, getAccount} from '../utils';
 
 export function getJadwal() {
     return function(dispatch) {
-        dispatch({type: "FETCH_JADAL"});
+        dispatch({type: "FETCH_JADWAL"});
         return axios.get(API_BASE+'Gurus/'+getAccount().id+'/jadwal/detail')
             .then(function (response) {
                 dispatch({type: "FETCH_JADWAL_FULFILLED", payload: response.data});
