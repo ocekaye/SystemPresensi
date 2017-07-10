@@ -43,7 +43,11 @@ ReactDOM.render(
                 <Route path='nilai/:parm' component={Nilai} />
                 <Route path='blank' />
                 <Route path='header' component={PageHeader} />
-                <Route path='daftar-siswa' component={DaftarSiswa} />
+                <Route path='siswa'>
+                  <Route path='tampil' component={DaftarSiswa}/>
+                  <Route path='tambah' component={DaftarSiswa}/>
+
+                  </Route>
                 <Route path='jadwal' component={Jadwal} />
                 <Route path='tugas'>
                     <Route path='all' component={Tugas} isAll={true}/>
@@ -53,7 +57,7 @@ ReactDOM.render(
               <Route path='presensi' component={Presensi}/>
               <Route path='kelas'>
                     <Route path='tampil' component={DaftarKelas}/>
-                    <Route path='create' component={DaftarKelas}/>
+                    <Route path='tambah' component={DaftarKelas}/>
 
               </Route>
 
