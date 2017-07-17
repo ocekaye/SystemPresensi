@@ -96,13 +96,14 @@ export default class NavMain extends React.Component {
                         <MenuItem icon="icon-plus-circle2" name="Tambah Kelas" to="app/kelas/tambah"/>
 
                       </MenuItemParent>
-                        <li>
-                            <a><i className="icon-users"></i> <span>Daftar Guru</span></a>
-                            <ul>
-                                <li><a><i className="icon-list2"></i>Tampil Semua</a></li>
-                                <li><a><i className="icon-plus-circle2"></i>Tambah Guru</a></li>
-                            </ul>
-                        </li>
+
+                      <MenuItemParent icon="icon-users" name="Daftar Guru">
+                        <MenuItem icon="icon-list2" name="Tampilkan Semua" to="app/guru/tampil"/>
+                        <MenuItem icon="icon-plus-circle2" name="Tambah Kelas" to="app/guru/tambah"/>
+
+                      </MenuItemParent>
+
+
                         <li className="navigation-header"><span>Info</span> <i className="icon-menu" title="Info"/></li>
                         <MenuItem icon="icon-calendar52" name="Jadwal" to="app/jadwal"/>
                     </ul>

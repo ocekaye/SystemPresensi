@@ -16,6 +16,7 @@ import Tugas from './components/Tugas';
 import CreateTugas from './components/Tugas/CreateTugas';
 import Presensi from './components/Presensi';
 import DaftarKelas from './components/DaftarKelas';
+import DaftarGuru from './components/DaftarGuru'
 
 
 
@@ -43,23 +44,32 @@ ReactDOM.render(
                 <Route path='nilai/:parm' component={Nilai} />
                 <Route path='blank' />
                 <Route path='header' component={PageHeader} />
+
                 <Route path='siswa'>
                   <Route path='tampil' component={DaftarSiswa}/>
                   <Route path='tambah' component={DaftarSiswa}/>
 
-                  </Route>
+                </Route>
                 <Route path='jadwal' component={Jadwal} />
                 <Route path='tugas'>
                     <Route path='all' component={Tugas} isAll={true}/>
                     <Route path='create' component={CreateTugas}/>
                     <Route path=':id' component={Tugas} isAll={false}/>
                 </Route>
-              <Route path='presensi' component={Presensi}/>
-              <Route path='kelas'>
+                <Route path='presensi' component={Presensi}/>
+                <Route path='kelas'>
                     <Route path='tampil' component={DaftarKelas}/>
                     <Route path='tambah' component={DaftarKelas}/>
 
+                </Route>
+
+              <Route path='guru'>
+                <Route path='tampil' component={DaftarGuru}/>
+                <Route path='tambah' component={DaftarGuru}/>
+
               </Route>
+
+
 
 
 
