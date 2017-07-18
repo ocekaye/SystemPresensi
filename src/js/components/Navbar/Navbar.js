@@ -9,10 +9,10 @@ import Sidebar from '../Sidebar';
 import { withRouter } from 'react-router';
 import { connect } from "react-redux";
 import { checkLogin } from "../../actions/accountActions"
+
 import { webStorage, isLogin } from '../../utils';
 
 @withRouter
-
 export default class Navbar extends React.Component {
     componentWillMount() {
         if (!isLogin()) this.props.router.replace('/login');

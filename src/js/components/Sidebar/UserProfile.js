@@ -6,6 +6,7 @@ import axios from 'axios';
 import { API_BASE, webStorage, getAccount } from '../../utils';
 
 export default class UserProfile extends React.Component {
+
     constructor() {
         super();
         this.state = {

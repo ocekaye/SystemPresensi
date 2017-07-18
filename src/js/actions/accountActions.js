@@ -12,8 +12,7 @@ export function login(username, password) {
     return axios.post(API_BASE+'Gurus/login', {
       username: username,
       password: password
-    })
-        .then((response) => {
+    }).then((response) => {
           webStorage.setItem('token', response.data.id);
           dispatch({type: "LOGIN_FULFILLED", payload: response.data})
           console.log('login', response);
