@@ -1,5 +1,6 @@
 
-import WebStorage from 'react-webstorage'
+import WebStorage from 'react-webstorage';
+import Moment from 'moment';
 
 export const API_BASE = 'http://localhost:3000/api/';
 
@@ -34,7 +35,20 @@ export function getAccount() {
         email: webStorage.getItem('email')
     }
     return account;
+}
 
+export function CustomMoment() {
+    Moment.updateLocale('en', {
+        months : [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
+            "Augustus", "September", "Oktober", "November", "Desember"
+        ],
+        weekdays : [
+            "Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"
+        ]
+    });
+
+    return Moment();
 }
 
 export function swipeDetect(el, callback){
