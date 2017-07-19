@@ -18,6 +18,7 @@ import CreateTugas from './components/Tugas/CreateTugas';
 import Presensi from './components/Presensi';
 import DaftarKelas from './components/DaftarKelas';
 import DaftarGuru from './components/DaftarGuru'
+import TambahKelas from './components/DaftarKelas/TambahKelas'
 
 
 
@@ -63,7 +64,7 @@ ReactDOM.render(
                 <Route path='presensi' component={Presensi}/>
                 <Route path='kelas'>
                     <Route path='tampil' component={DaftarKelas}/>
-                    <Route path='tambah' component={DaftarKelas}/>
+                    <Route path='tambah' component={TambahKelas}/>
 
                 </Route>
 
