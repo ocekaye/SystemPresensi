@@ -13,6 +13,7 @@ import { isLogin, baseUrl } from '../../utils';
 export default class Login extends React.Component {
 
     login(e){
+
         e.preventDefault();
         const {dispatch} =  this.props;
         dispatch(login('guru1', '123')).then(function (id) {
@@ -21,6 +22,7 @@ export default class Login extends React.Component {
                 window.open(baseUrl, "_self");
             });
         });
+
     }
 
     render() {

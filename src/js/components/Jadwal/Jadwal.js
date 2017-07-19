@@ -16,12 +16,10 @@ export default class Jadwal extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('next prop', nextProps);
         this.setState({jadwal: nextProps.jadwal.jadwal});
     }
 
     render() {
-        console.log('render jadwal', this.state.jadwal);
         let jadwal = this.state.jadwal.map(({hari, tanggal, kelas, mapel}, i) => {
             return (<tr>
                 <td>
