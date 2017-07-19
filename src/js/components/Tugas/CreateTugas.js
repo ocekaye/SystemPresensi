@@ -37,7 +37,7 @@ export default class CreateTugas extends React.Component {
                 <div className="content">
                     <div className="panel panel-flat">
                         <div className="row">
-                            <div className="panel-body">
+                              <div className="panel-body">
                                 <form className="form-horizontal" action="#">
                                 <div className="content-group">
                                     <legend className="text-bold">New Tugas</legend>

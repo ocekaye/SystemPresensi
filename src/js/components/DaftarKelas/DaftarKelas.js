@@ -4,6 +4,7 @@
 import React from 'react';
 import PageHeader from '../PageHeader';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import PageHeaderButton from '../PageHeader/PageHeaderButton';
 import axios from 'axios';
 import {API_BASE} from '../../utils';
 
@@ -40,7 +41,9 @@ export default class DaftarKelas extends React.Component {
     const {DaftarKelas} = this.state;
     return (
       <div className="content-wrapper col-lg-12">
-        <PageHeader icon="icon-home4 position-left" text1="Daftar Kelas"/>
+        <PageHeader icon="icon-home4 position-left" text1="Daftar Kelas">
+          <PageHeaderButton link="#/app/kelas/tambah" icon="icon-plus-circle2" iconColor="text-primary" text="Tambah Kelas"/>
+        </PageHeader>
         <div className="content">
           <div className="panel panel-flat">
             <BootstrapTable data={DaftarKelas} striped hover>
@@ -52,7 +55,7 @@ export default class DaftarKelas extends React.Component {
             </div>
 
           </div>
-        
+
 
 
 
