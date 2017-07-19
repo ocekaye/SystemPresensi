@@ -10,6 +10,7 @@ import Home from './components/Home';
 import PageHeader from './components/PageHeader';
 import DaftarSiswa from './components/DaftarSiswa';
 import Nilai from './components/Nilai';
+import Input from './components/Nilai/Input';
 import Login from './components/Login';
 import Jadwal from './components/Jadwal';
 import Tugas from './components/Tugas';
@@ -41,7 +42,10 @@ ReactDOM.render(
             <Route path='/app' component={Navbar}>
                 <IndexRoute component={Home} />
                 <Route path='home' component={Home} />
-                <Route path='nilai/:parm' component={Nilai} />
+                <Route path='nilai' >
+                    <Route path='input/:kelasId/:tugasId' component={Input} />
+                    <Route path='page/:parm' component={Nilai} />
+                </Route>
                 <Route path='blank' />
                 <Route path='header' component={PageHeader} />
 

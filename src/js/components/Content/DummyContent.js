@@ -280,20 +280,6 @@ export default class DummyContent extends React.Component {
                             <div className="panel panel-flat">
                                 <div className="panel-heading">
                                     <h6 className="panel-title">Rata - Rata Nilai</h6>
-                                    <div className="heading-elements">
-                                        <ul className="icons-list">
-                                            <li className="dropdown">
-                                                <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="icon-menu7"></i> <span className="caret"></span></a>
-                                                <ul className="dropdown-menu dropdown-menu-right">
-                                                    <li><a href="#"><i className="icon-sync"></i> Update data</a></li>
-                                                    <li><a href="#"><i className="icon-list-unordered"></i> Detailed log</a></li>
-                                                    <li><a href="#"><i className="icon-pie5"></i> Statistics</a></li>
-                                                    <li className="divider"></li>
-                                                    <li><a href="#"><i className="icon-cross3"></i> Clear list</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
 
                                 <div className="table-responsive">

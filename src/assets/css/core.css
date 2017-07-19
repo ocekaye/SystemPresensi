@@ -6333,3 +6333,20 @@ h6.panel-title,
 .popover[class*=border-].left > .arrow:after {
   border-left-color: inherit;
 }
+
+.nilai-kelas td{
+  cursor:pointer
+}
+.nilai-kelas td:hover{
+  background-color: rgba(25, 118, 210, 0.3);
+}
+
+.nilai-kelas-select{
+  background-color: rgb(25, 118, 210);
+  cursor:pointer
+}
+
+tr.table-hover:hover{
+  background-color: rgba(25, 118, 210, 0.3);
+  cursor:pointer
+}

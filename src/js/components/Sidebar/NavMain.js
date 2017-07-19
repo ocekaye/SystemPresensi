@@ -52,11 +52,11 @@ export default class NavMain extends React.Component {
                         <li className="navigation-header"><span>Main</span> <i className="icon-menu" title="Main pages"/></li>
                         <MenuItem icon="icon-home4" name="Dashboard" to="app/home"/>
                         <MenuItemParent icon="icon-stack-star" name="Nilai Siswa" >
-                            <MenuItem icon="icon-bell2" name="Nilai Harian" to="app/nilai/harian"/>
-                            <MenuItem icon="icon-calendar" name="Nilai Tugas" to="app/nilai/tugas" />
+                            <MenuItem icon="icon-bell2" name="Nilai Harian" to="app/nilai/page/harian"/>
+                            <MenuItem icon="icon-calendar" name="Nilai Tugas" to="app/nilai/page/tugas" />
                             <li className="navigation-divider" />
-                            <MenuItem icon="icon-calendar2" name="Nilai UTS" to="app/nilai/uts"/>
-                            <MenuItem icon="icon-calendar3" name="Nilai UAS" to="app/nilai/uas"/>
+                            <MenuItem icon="icon-calendar2" name="Nilai UTS" to="app/nilai/page/uts"/>
+                            <MenuItem icon="icon-calendar3" name="Nilai UAS" to="app/nilai/page/uas"/>
                         </MenuItemParent>
                         <MenuItemParent icon="icon-stack-check" name="Presensi" >
                             <MenuItemParent icon="icon-home8" name="Kelas 1" >

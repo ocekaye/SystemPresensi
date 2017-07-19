@@ -1,6 +1,7 @@
 
 import WebStorage from 'react-webstorage';
-import Moment from 'moment';
+import moment from 'moment';
+import Datetime from 'react-datetime';
 
 export const API_BASE = 'http://localhost:3000/api/';
 
@@ -37,8 +38,8 @@ export function getAccount() {
     return account;
 }
 
-export function CustomMoment() {
-    Moment.updateLocale('en', {
+export function CustomMoment(date) {
+    moment.updateLocale('en', {
         months : [
             "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
             "Augustus", "September", "Oktober", "November", "Desember"
@@ -48,7 +49,21 @@ export function CustomMoment() {
         ]
     });
 
-    return Moment();
+    return moment(date);
+}
+
+export function CustomDateTime() {
+    Datetime.moment.updateLocale('en', {
+        months : [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
+            "Augustus", "September", "Oktober", "November", "Desember"
+        ],
+        weekdays : [
+            "Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"
+        ]
+    });
+
+    return Datetime();
 }
 
 export function swipeDetect(el, callback){

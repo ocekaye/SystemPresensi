@@ -7,6 +7,7 @@ import PageHeaderButton from '../PageHeader/PageHeaderButton';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router';
 import {getAllTugas, getAllTugasByKelas} from '../../actions/guruAction';
+import {CustomMoment } from '../../utils';
 
 @withRouter
 @connect((state) => state)
@@ -43,6 +44,8 @@ export default class Jadwal extends React.Component {
 
     render() {
         let jadwal = this.state.tugas.map(({nama, mulai, selesai, kelas, mapel}, i) => {
+            let mMulai = CustomMoment(mulai).format("dddd, DD-MMMM-YYYY, hh:mm:ss");
+            let mSelesai = CustomMoment(selesai).format("dddd, DD-MMMM-YYYY, hh:mm:ss");
             return (<tr>
                 <td>{nama}</td>
                 <td>
@@ -52,11 +55,11 @@ export default class Jadwal extends React.Component {
                     <div className="media-left">
                         <div className="text-default text-semibold">
                             <span className="status-mark border-blue position-left"/>
-                            {mulai}
+                            {mMulai}
                         </div>
                         <div className="text-default text-semibold">
                             <span className="status-mark border-warning position-left"/>
-                            {selesai}
+                            {mSelesai}
                         </div>
                     </div>
                 </td>
@@ -78,7 +81,15 @@ export default class Jadwal extends React.Component {
                                         <thead>
                                         <tr>
                                             <th className="col-md-4">Nama Tugas</th>
-                                            <th className="col-md-4">Mulai / Selesai</th>
+                                            <th className="col-md-4">
+                                                <span className="status-mark border-blue position-left"
+                                                      style={{marginRight:"1px"}}/>
+                                                Mulai
+                                                {'  '}
+                                                <span className="status-mark border-warning position-left"
+                                                      style={{marginRight:"1px", marginLeft: "5px"}}/>
+                                                Selesai
+                                            </th>
                                             <th className="col-md-4">Kelas</th>
                                             <th className="col-md-4">Mapel</th>
                                         </tr>
