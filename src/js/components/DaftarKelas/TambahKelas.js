@@ -16,7 +16,6 @@ export default class TambahKelas extends React.Component {
           <div className="panel panel-flat">
             <div className="row">
               <div className="panel-body">
-                <p className="content-group-lg">Examples of standard form controls supported in an example form layout. Individual form controls automatically receive some global styling. All textual <code>&lt;input></code>, <code>&lt;textarea></code>, and <code>&lt;select></code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing. Labels in horizontal form require <code>.control-label</code> class.</p>
 
                 <form className="form-horizontal" action="#">
                   <fieldset className="content-group">

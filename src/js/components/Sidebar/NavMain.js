@@ -99,7 +99,7 @@ export default class NavMain extends React.Component {
 
                       <MenuItemParent icon="icon-users" name="Daftar Guru">
                         <MenuItem icon="icon-list2" name="Tampilkan Semua" to="app/guru/tampil"/>
-                        <MenuItem icon="icon-plus-circle2" name="Tambah Kelas" to="app/guru/tambah"/>
+                        <MenuItem icon="icon-plus-circle2" name="Tambah Guru" to="app/guru/tambah"/>
 
                       </MenuItemParent>
 

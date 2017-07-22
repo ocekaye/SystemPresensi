@@ -24,6 +24,7 @@ export default class Nilai extends React.Component {
     loadKelas(){
         let self = this;
         axios.get(API_BASE+"Kelas/").then(function (response) {
+
             self.setState({
                 dataKelas: response.data
             });
@@ -35,6 +36,7 @@ export default class Nilai extends React.Component {
     loadTugasByKelas(id){
         let self = this;
         axios.get(API_BASE+"Kelas/"+id+"/"+getAccount().id+"/tugas/").then(function (response) {
+          console.log(response);
             self.setState({
                 dataTugas: response.data,
                 isLoading: false,

@@ -17,8 +17,10 @@ import Tugas from './components/Tugas';
 import CreateTugas from './components/Tugas/CreateTugas';
 import Presensi from './components/Presensi';
 import DaftarKelas from './components/DaftarKelas';
-import DaftarGuru from './components/DaftarGuru'
-import TambahKelas from './components/DaftarKelas/TambahKelas'
+import DaftarGuru from './components/DaftarGuru';
+import TambahKelas from './components/DaftarKelas/TambahKelas';
+import TambahGuru from './components/DaftarGuru/TambahGuru.js';
+import TambahSiswa from './components/DaftarSiswa/TambahSiswa.js';
 
 
 
@@ -52,7 +54,7 @@ ReactDOM.render(
 
                 <Route path='siswa'>
                   <Route path='tampil' component={DaftarSiswa}/>
-                  <Route path='tambah' component={DaftarSiswa}/>
+                  <Route path='tambah' component={TambahSiswa}/>
 
                 </Route>
                 <Route path='jadwal' component={Jadwal} />
@@ -70,7 +72,7 @@ ReactDOM.render(
 
               <Route path='guru'>
                 <Route path='tampil' component={DaftarGuru}/>
-                <Route path='tambah' component={DaftarGuru}/>
+                <Route path='tambah' component={TambahGuru}/>
 
               </Route>
 

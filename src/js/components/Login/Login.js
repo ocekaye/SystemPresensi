@@ -16,7 +16,7 @@ export default class Login extends React.Component {
 
         e.preventDefault();
         const {dispatch} =  this.props;
-        dispatch(login('guru1', '123')).then(function (id) {
+        dispatch(login('busiti', '123')).then(function (id) {
             console.log('login page', id);
             dispatch(getAccount(id)).then(function (id) {
                 window.open(baseUrl, "_self");
