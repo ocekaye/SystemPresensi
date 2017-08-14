@@ -6,6 +6,8 @@ import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import PageHeader from '../PageHeader';
 import axios from 'axios';
 import { API_BASE, webStorage } from '../../utils';
+import PageHeaderButton from '../PageHeader/PageHeaderButton';
+
 
 export default class DaftarSiswa extends React.Component {
     constructor() {
@@ -44,7 +46,10 @@ export default class DaftarSiswa extends React.Component {
 
         return (
             <div>
-                <PageHeader/>
+                <PageHeader>
+                  <PageHeaderButton link="#/app/siswa/tambah" icon="icon-plus-circle2" iconColor="text-primary" text="Tambah Siswa"/>
+                </PageHeader>
+
                 <div className="content">
                     <div className="row">
                         <div className="col-lg-12">
