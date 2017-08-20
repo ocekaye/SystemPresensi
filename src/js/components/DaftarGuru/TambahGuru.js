@@ -81,11 +81,11 @@ export default class TambahGuru extends React.Component {
         "desc": deskripsi,
         "no": nomerhp,
         "image": image,
-        "realm": realm,
         "username": username,
         "email": email,
+        "password":"123"
       };
-      axios.post(API_BASE+"Guru", data).then(function (response) {
+      axios.post(API_BASE+"Gurus", data).then(function (response) {
         toGo.replace('app/guru/tampil');
       })
     }
