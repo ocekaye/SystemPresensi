@@ -21,6 +21,7 @@ import DaftarGuru from './components/DaftarGuru';
 import TambahKelas from './components/DaftarKelas/TambahKelas';
 import TambahGuru from './components/DaftarGuru/TambahGuru.js';
 import TambahSiswa from './components/DaftarSiswa/TambahSiswa.js';
+import TambahSiswaKelas from './components/TambahSiswaKelas/TambahSiswaKelas'
 
 
 
@@ -75,6 +76,8 @@ ReactDOM.render(
                 <Route path='tambah' component={TambahGuru}/>
 
               </Route>
+
+              <Route path='tambahsiswakelas' component={TambahSiswaKelas}/>
 
 
 

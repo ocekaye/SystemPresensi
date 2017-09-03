@@ -23,8 +23,8 @@ export default class TambahGuru extends React.Component {
     deskripsi: null,
     nomerhp: null,
     image: null,
-    realm: null,
     username: null,
+    password: null,
     email: null,
 
   }
@@ -52,11 +52,11 @@ export default class TambahGuru extends React.Component {
       case "image":
         this.setState({image: e.target.value});
         break;
-      case "realm":
-        this.setState({realm: e.target.value});
-        break;
       case "username":
         this.setState({username: e.target.value});
+        break;
+      case "password":
+        this.setState({password: e.target.value});
         break;
       case "email":
         this.setState({email: e.target.value});
@@ -68,8 +68,8 @@ export default class TambahGuru extends React.Component {
   }
 
   save(){
-    const{guru, alamat, tempatlahir, tanggallahir, deskripsi, nomerhp, image, realm, username, email, saving} = this.state;
-    const isValid = (guru && alamat && tempatlahir && tanggallahir && deskripsi && nomerhp && image && realm && username && email );
+    const{guru, alamat, tempatlahir, tanggallahir, deskripsi, nomerhp, image, username, password, email, saving} = this.state;
+    const isValid = (guru && alamat && tempatlahir && tanggallahir && deskripsi && nomerhp && image && username && password && email );
     const toGo = this.props.router;
     if (isValid){
       this.setState({saving: true});
@@ -81,11 +81,11 @@ export default class TambahGuru extends React.Component {
         "desc": deskripsi,
         "no": nomerhp,
         "image": image,
-        "realm": realm,
         "username": username,
+        "password": password,
         "email": email,
       };
-      axios.post(API_BASE+"Guru", data).then(function (response) {
+      axios.post(API_BASE+"Gurus", data).then(function (response) {
         toGo.replace('app/guru/tampil');
       })
     }
@@ -95,8 +95,8 @@ export default class TambahGuru extends React.Component {
 
 
   render(){
-    const{guru, alamat, tempatlahir, tanggallahir, deskripsi, nomerhp, image, realm, username, email, saving} = this.state;
-    const isValid = (guru && alamat && tempatlahir && tanggallahir && deskripsi && nomerhp && image && realm && username && email );
+    const{guru, alamat, tempatlahir, tanggallahir, deskripsi, nomerhp, image, username, password, email, saving} = this.state;
+    const isValid = (guru && alamat && tempatlahir && tanggallahir && deskripsi && nomerhp && image && username && password && email );
     const saveStyle = saving ? "icon-spinner2 spinner" : "icon-folder-check";
 
     return(
@@ -161,16 +161,16 @@ export default class TambahGuru extends React.Component {
                     </div>
 
                     <div className="form-group">
-                      <label className="control-label col-lg-2">Realm</label>
+                      <label className="control-label col-lg-2">Username</label>
                       <div className="col-lg-10">
-                        <input type="text" name="realm" onChange={::this.handleValue} className="form-control"/>
+                        <input type="text" name="username" onChange={::this.handleValue} className="form-control"/>
                       </div>
                     </div>
 
                     <div className="form-group">
-                      <label className="control-label col-lg-2">Username</label>
+                      <label className="control-label col-lg-2">Password</label>
                       <div className="col-lg-10">
-                        <input type="text" name="username" onChange={::this.handleValue} className="form-control"/>
+                        <input type="text" name="password" onChange={::this.handleValue} className="form-control"/>
                       </div>
                     </div>
 
