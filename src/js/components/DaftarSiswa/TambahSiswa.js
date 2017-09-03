@@ -80,11 +80,11 @@ export default class TambahSiswa extends React.Component{
         "desc": deskripsi,
         "no": nomerhp,
         "image": image,
-        "realm": realm,
         "username": username,
         "email": email,
+        "password": "123"
       };
-      axios.post(API_BASE+"Siswa", data).then(function (response) {
+      axios.post(API_BASE+"Siswas", data).then(function (response) {
         toGo.replace('app/siswa/tampil');
       })
     }
