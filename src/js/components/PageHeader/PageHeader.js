@@ -2,9 +2,18 @@
  * Created by Hinata on 2/28/2017.
  */
 import React from 'react';
+import { withRouter } from 'react-router';
 
+@withRouter
 export default class PageHeader extends React.Component {
+    componentWillMount(){
+        console.log('props', this.props);
+    }
     render() {
+        const {routes} = this.props;
+
+        // let route = routes.map();
+
         return (
         <div className="page-header page-header-default">
             <div className="page-header-content">
@@ -21,27 +30,18 @@ export default class PageHeader extends React.Component {
 
             <div className="breadcrumb-line">
                 <ul className="breadcrumb">
-                    <li><a href="index.html"><i className="icon-home2 position-left"/> Home</a></li>
-                    <li className="active">Dashboard</li>
+                   {/* <li><i className="icon-home2 position-left"/> Home</li>
+                    <li className="active">Dashboard</li>*/}
+                    {routes.map((data, i)=>{
+                        if (i == 0){
+                          return(<li><i className="icon-home2 position-left"/> App</li>)
+                        }
+                        return(<li>{data.path.split('/')[0]}</li>);
+                    })}
                 </ul>
 
                 <ul className="breadcrumb-elements">
-                    <li><a href="#"><i className="icon-comment-discussion position-left"/> Support</a></li>
-                    <li className="dropdown">
-                        <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                            <i className="icon-gear position-left"/>
-                            Settings
-                            <span className="caret"/>
-                        </a>
-
-                        <ul className="dropdown-menu dropdown-menu-right">
-                            <li><a href="#"><i className="icon-user-lock"/> Account security</a></li>
-                            <li><a href="#"><i className="icon-statistics"/> Analytics</a></li>
-                            <li><a href="#"><i className="icon-accessibility"/> Accessibility</a></li>
-                            <li className="divider"/>
-                            <li><a href="#"><i className="icon-gear"/> All settings</a></li>
-                        </ul>
-                    </li>
+                    {this.props.breadcrumbElements ? this.props.breadcrumbElements : null}
                 </ul>
             </div>
         </div>
