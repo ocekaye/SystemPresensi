@@ -22,10 +22,8 @@ export default class TambahSiswa extends React.Component{
     deskripsi: null,
     nomerhp: null,
     image: null,
-    realm: null,
     username: null,
-    email: null,
-
+    email: null
   }
 
   handleValue(e){
@@ -51,9 +49,6 @@ export default class TambahSiswa extends React.Component{
       case "image":
         this.setState({image: e.target.value});
         break;
-      case "realm":
-        this.setState({realm: e.target.value});
-        break;
       case "username":
         this.setState({username: e.target.value});
         break;
@@ -67,8 +62,8 @@ export default class TambahSiswa extends React.Component{
   }
 
   save(){
-    const{siswa, alamat, tempatlahir, tanggallahir, deskripsi, nomerhp, image, realm, username, email, saving} = this.state;
-    const isValid = (siswa && alamat && tempatlahir && tanggallahir && deskripsi && nomerhp && image && realm && username && email );
+    const{siswa, alamat, tempatlahir, tanggallahir, deskripsi, nomerhp, image, username, email, saving} = this.state;
+    const isValid = (siswa && alamat && tempatlahir && tanggallahir && deskripsi && nomerhp && image && username && email );
     const toGo = this.props.router;
     if (isValid){
       this.setState({saving: true});
@@ -94,8 +89,8 @@ export default class TambahSiswa extends React.Component{
 
 
   render(){
-    const{siswa, alamat, tempatlahir, tanggallahir, deskripsi, nomerhp, image, realm, username, email, saving} = this.state;
-    const isValid = (siswa && alamat && tempatlahir && tanggallahir && deskripsi && nomerhp && image && realm && username && email );
+    const{siswa, alamat, tempatlahir, tanggallahir, deskripsi, nomerhp, image, username, email, saving} = this.state;
+    const isValid = (siswa && alamat && tempatlahir && tanggallahir && deskripsi && nomerhp && image && username && email );
     const saveStyle = saving ? "icon-spinner2 spinner" : "icon-folder-check";
 
     return(
@@ -156,13 +151,6 @@ export default class TambahSiswa extends React.Component{
                       <label className="control-label col-lg-2">Image</label>
                       <div className="col-lg-10">
                         <input type="text" name="image" onChange={::this.handleValue} className="form-control"/>
-                      </div>
-                    </div>
-
-                    <div className="form-group">
-                      <label className="control-label col-lg-2">Realm</label>
-                      <div className="col-lg-10">
-                        <input type="text" name="realm" onChange={::this.handleValue} className="form-control"/>
                       </div>
                     </div>
 
