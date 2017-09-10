@@ -6,19 +6,37 @@ import { withRouter } from 'react-router';
 
 @withRouter
 export default class PageHeader extends React.Component {
+    state = {
+        text1: '',
+        text2: '',
+        icon: '',
+    }
     componentWillMount(){
         console.log('props', this.props);
+        this.setState({
+            text1: this.props.text1,
+            text2: this.props.text2,
+            icon: this.props.icon,
+        });
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            text1: nextProps.text1,
+            text2: nextProps.text2,
+            icon: nextProps.icon,
+        });
     }
     render() {
         const {routes} = this.props;
-
+        const {text1, text2 , icon} = this.state;
         // let route = routes.map();
 
         return (
         <div className="page-header page-header-default">
             <div className="page-header-content">
                 <div className="page-title">
-                    <h4><i className={this.props.icon} /> <span className="text-semibold">{this.props.text1}</span> {this.props.text2 ? " - "+this.props.text2 : ""}</h4>
+                    <h4><i className={icon} /> <span className="text-semibold">{text1}</span> {text2 ? " - "+text2 : ""}</h4>
                 </div>
 
                 <div className="heading-elements">
