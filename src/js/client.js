@@ -22,6 +22,8 @@ import TambahKelas from './components/DaftarKelas/TambahKelas';
 import TambahGuru from './components/DaftarGuru/TambahGuru.js';
 import TambahSiswa from './components/DaftarSiswa/TambahSiswa.js';
 import TambahSiswaKelas from './components/TambahSiswaKelas/TambahSiswaKelas'
+import DetailKelas from './components/DaftarKelas/DetailKelas';
+import SiswaToKelas from './components/DaftarKelas/SiswaToKelas';
 
 
 
@@ -68,7 +70,8 @@ ReactDOM.render(
                 <Route path='kelas'>
                     <Route path='tampil' component={DaftarKelas}/>
                     <Route path='tambah' component={TambahKelas}/>
-
+                    <Route path='detail/:id' component={DetailKelas}/>
+                    <Route path='detail/:id/siswa' component={SiswaToKelas}/>
                 </Route>
 
               <Route path='guru'>

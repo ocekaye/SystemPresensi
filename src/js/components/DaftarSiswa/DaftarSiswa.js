@@ -65,7 +65,7 @@ export default class DaftarSiswa extends React.Component {
         }).catch(function (error) {
             console.error(error);
             $('#modal_hapus').modal('hide');
-        });;
+        });
     }
 
     loadData(page, itemPP) {
@@ -116,6 +116,7 @@ export default class DaftarSiswa extends React.Component {
         if (kata != null)
             word = kata.value.slice(1, kata.lenght);
         if(e.key === 'Enter'){
+            if (word.length<1) return;
             let self = this;
             const filter = `?filter={"where":{"or":[{"nama":{"like":"${word}"}},{ "username":{"like":"${word}"}}]}}`;
             axios.get(API_BASE + 'Siswas'+filter, {
