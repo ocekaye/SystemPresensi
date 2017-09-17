@@ -38,7 +38,7 @@ export default class DaftarSiswa extends React.Component {
         axios.get(API_BASE + 'Siswas/count', {
             headers: {'Authorization': /*webStorage.getItem('token')*/""}
         }).then(function (response) {
-            const count = Math.ceil(response.data.count/itemPerPage);
+            const count = Math.ceil(response.data.count/itemPerPage); //pembulatan keatas angka
             self.setState({
                 totalPage: count,
                 count: response.data.count
