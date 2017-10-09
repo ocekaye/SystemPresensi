@@ -63,7 +63,19 @@ export default class Jadwal extends React.Component {
                         </div>
                     </div>
                 </td>
-                <td>{kelas.map(({desc}) => {return desc+" "})}</td>
+                <td style={{maxWidth:300}}>
+                    <div className="row">
+                        {kelas.map(({desc, index}) => {
+                            return (
+                                <div className="col-lg-3">
+                                <button key={index} type="button" className="btn border-slate text-slate-800 btn-flat" style={{marginRight:1, cursor:'default'}}>
+                                    {desc}
+                                </button>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </td>
                 <td>{mapel.nama}</td>
             </tr>);
         });

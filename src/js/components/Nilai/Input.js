@@ -20,7 +20,7 @@ export default class Input extends React.Component {
     }
     componentWillMount() {
         let tugasId = this.props.params.tugasId;
-        let kelasId = this.props.params.kelasId
+        let kelasId = this.props.params.kelasId;
         this.setState({
             kelasId: kelasId,
             tugasId: tugasId
@@ -64,8 +64,9 @@ export default class Input extends React.Component {
     }
 
 
+
     render() {
-        let {dataSiswa, dataKelas, dataTugas} = this.state;
+        let {dataSiswa, dataKelas, dataTugas, dataNilai, tugasId} = this.state;
 
         let siswa = dataSiswa.map(({nama, image, id}, i)=>{
             return(
@@ -79,7 +80,7 @@ export default class Input extends React.Component {
                             <div className=""><a className="text-default text-semibold">{nama}</a></div>
                         </div>
                     </td>
-                    <td style={{width:300, cursor:"pointer"}}><TextEdit /></td>
+                    <td style={{width:300, cursor:"pointer"}}><TextEdit tugasId={tugasId} siswaId={id}/></td>
                 </tr>
             );
         });

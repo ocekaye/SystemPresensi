@@ -21,6 +21,8 @@ export default class CreateTugas extends React.Component {
         selesai: null,
         mapelId: null,
         saving: false,
+        dataKelas:[],
+        selectedKelas:[]
     }
     componentWillMount(){
         Datetime.moment.updateLocale('en', {
@@ -33,10 +35,53 @@ export default class CreateTugas extends React.Component {
             ]
         });
         this.props.dispatch(getMapel());
+        this.getDataKelas();
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({mapels: nextProps.mapel.mapels});
+    }
+
+    getDataKelas(){
+        let self = this;
+        axios.get(`${API_BASE}Kelas`).then(function (response) {
+            self.setState({
+                dataKelas: response.data
+            });
+        });
+    }
+
+    checkKelasInTugas(kelas){
+        return this.getIndexOfKelas(kelas) >= 0
+    }
+
+    getIndexOfKelas(kelas){
+        for (var i = 0; i < this.state.selectedKelas.length; i++){
+            if (this.state.selectedKelas[i].id === kelas.id){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    selectKelas(kelas){
+        let {selectedKelas} = this.state;
+        if (this.checkKelasInTugas(kelas)){
+            this.removeKelas(kelas);
+            return;
+        }
+        selectedKelas.push(kelas);
+        this.setState({
+            selectedKelas
+        });
+    }
+
+    removeKelas(kelas){
+        let {selectedKelas} = this.state;
+        selectedKelas.splice(this.getIndexOfKelas(kelas), 1);
+        this.setState({
+            selectedKelas
+        });
     }
 
     handleValue(e){
@@ -71,15 +116,28 @@ export default class CreateTugas extends React.Component {
                 "guruId": getAccount().id,
                 "mapelId": mapelId
             };
+            let self = this;
             axios.post(API_BASE+"Tugas", data).then(function (response) {
-                toGo.replace('app/tugas/all');
+                self.tugasKelasRelation(response.data.id);
             })
         }
+    }
+
+    tugasKelasRelation(tugasId){
+        const toGo = this.props.router;
+        const {selectedKelas} = this.state;
+        selectedKelas.map((kelas, i)=>{
+            axios.put(`${API_BASE}Kelas/${kelas.id}/tugas/rel/${tugasId}`).then(function (response) {
+                if(i >= selectedKelas.length-1) toGo.replace('app/tugas/all');
+            }).catch(function (error) {
+                if(i >= selectedKelas.length) toGo.replace('app/tugas/all');
+            })
+        });
 
     }
 
     render() {
-        const {mapels, namaTugas, mulai, selesai, mapelId, saving} = this.state;
+        const {mapels, namaTugas, mulai, selesai, mapelId, saving, dataKelas, selectedKelas} = this.state;
         const isValid = (namaTugas && mulai && selesai && mapelId);
         const saveStyle = saving ? "icon-spinner2 spinner" : "icon-folder-check";
         let listMapel = mapels.map(({id, nama}) => {
@@ -88,6 +146,59 @@ export default class CreateTugas extends React.Component {
             );
         });
         listMapel.unshift(<option value=''>Pilih Mapel</option>);
+
+        let kelasList = dataKelas.map((kelas, index)=>{
+            const bg = ['blue', 'red', 'green', 'aqua', 'coral'];
+            let bgW = index;
+            if (index > bg.length - 1){
+                bgW = index%bg.length;
+            }
+            const iconStyle = {
+                height: 50,
+                width:50,
+                paddingTop: 10,
+                fontSize: 30,
+                color: 'white',
+                backgroundColor: bg[bgW],
+            };
+            return(
+                <div className="col-lg-6 col-sm-6" key={index} onClick={()=> {this.selectKelas(kelas)}}>
+                    <div className="panel panel-flat">
+                        <div className="panel-heading" style={{paddingTop:10, paddingBottom: 5}}>
+                            <h6 className="panel-title">{kelas.desc}</h6>
+                        </div>
+                        <div className="panel-body cursor-pointer" >
+                            <div className="row">
+                                <div className="col-xs-3" style={{fontSize:24}}>
+                                    <i className="icon-users4 img-circle" style={iconStyle}/>
+                                    {this.checkKelasInTugas(kelas) ?
+                                        <div style={{marginTop:-49}}>
+                                            <i className="icon-checkmark4 img-circle" style={{fontSize:50, backgroundColor:'rgba(29, 165, 50, 0.5)', color:'red'}}/>
+                                        </div> :
+                                        null
+                                    }
+                                </div>
+                                <div className="col-xs-9" style={{overflow: "hidden"}}>
+                                    <div>{kelas.nama}</div>
+                                    <div>{kelas.desc}</div>
+                                    <div>{kelas.tag}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+
+        let selectedKelasList = selectedKelas.map((kelas, index) =>{
+            return(
+                <button key={index} type="button" className="btn border-slate text-slate-800 btn-flat" style={{marginRight:1, cursor:'default'}}>
+                    {kelas.desc}
+                    <i style={{color: 'red', cursor:'pointer'}} className="icon-cross" onClick={()=>{this.selectKelas(kelas)}}/>
+                </button>
+            );
+        });
+
         return (
             <div style={{margin:0}}>
                 <PageHeader icon="icon-pencil5 position-left" text1="Create Tugas"/>
@@ -134,6 +245,18 @@ export default class CreateTugas extends React.Component {
                                             </select>
                                         </div>
                                     </div>
+                                    <div className="form-group" >
+                                        <label className="control-label col-lg-12" >
+                                            Kelas
+                                            <button type="button" className="btn border-warning text-warning-600 btn-flat btn-icon btn-rounded" data-toggle="modal" data-target="#modal_siswa"><i className="icon-plus3"/></button>
+                                        </label>
+
+                                        <div className="col-lg-12">
+                                            <div className="btn-group">
+                                                {selectedKelasList}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 </form>
                                 <div className="col-lg-12" style={{borderTop: '1px solid #e5e5e5', paddingTop:15}}>
@@ -146,6 +269,27 @@ export default class CreateTugas extends React.Component {
                                         </button>
                                     </div>
                                 </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal_siswa" className="modal fade">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+
+                            <div className="modal-body">
+                                <div className="row">
+                                    <div className="col-lg-12">
+                                        <div className="row">
+                                            {kelasList}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="modal-footer">
+                                <button className="btn btn-link" data-dismiss="modal"><i className="icon-cross"/> Cancel</button>
 
                             </div>
                         </div>

@@ -91,7 +91,7 @@ export default class DaftarSiswa extends React.Component {
 
     }
 
-    handlePageChane(page){
+    handlePageChange(page){
         this.setState({
             page: page
         });
@@ -114,7 +114,7 @@ export default class DaftarSiswa extends React.Component {
         let kata = this.cari;
         let word = '';
         if (kata != null)
-            word = kata.value.slice(1, kata.lenght);
+            word = kata.value.slice(1, kata.value.lenght);
         if(e.key === 'Enter'){
             if (word.length<1) return;
             let self = this;
@@ -144,9 +144,7 @@ export default class DaftarSiswa extends React.Component {
     }
 
     render() {
-
         let self = this;
-
         const {dataSiswa, totalPage, page, showPerPage, itemPerPage, onSearch, userDetail} = this.state;
         let datas = dataSiswa.map((siswa, index)=>{
             return(
@@ -193,7 +191,6 @@ export default class DaftarSiswa extends React.Component {
                 </div>
             );
         });
-
         const breadcrumbElements = [];
         breadcrumbElements.push(<li className="dropdown">
             <a  className="dropdown-toggle" data-toggle="dropdown">
@@ -210,8 +207,7 @@ export default class DaftarSiswa extends React.Component {
                 <li><a onClick={()=>{this.changeItemPerPage(30)}}><i className="icon-stack-empty"/> 30 Item/Page</a></li>
             </ul>
         </li>);
-        // if (dataSiswa != null)datas = dataSiswa;
-
+        console.log('ref cari', this.cari);
         return (
             <div>
                 <PageHeader icon=" icon-users position-left" text1="Daftar Siswa" breadcrumbElements={breadcrumbElements}>
@@ -221,15 +217,17 @@ export default class DaftarSiswa extends React.Component {
                                 <div className="input-group">
                                     <input type="text" className="form-control" placeholder="Nama / Username" onKeyDown={::this.search}
                                            ref={(cari) => {this.cari = cari}}/>
-                                    {!onSearch ?
+                                    {onSearch ?
+                                        <span className="input-group-addon" onClick={()=>{this.loadData(page)}}
+                                              style={{cursor:'pointer'}}>
+                                            <i className="icon-cross2"/>
+                                        </span>
+                                         :
                                         <span className="input-group-addon"  onClick={()=>{this.search({key:'Enter'})}}
                                               style={{cursor:'pointer'}}>
                                             <i className="icon-search4 "/>
-                                        </span>:
-                                        <span className="input-group-addon" onClick={()=>{this.loadData(page)}}
-                                              style={{cursor:'pointer'}}>
-                                                <i className="icon-cross2"/>
                                         </span>
+
                                     }
                                 </div>
                         </div>
@@ -243,7 +241,7 @@ export default class DaftarSiswa extends React.Component {
                     </div>
                     {onSearch ? null :
                         <div style={{textAlign: 'center'}}>
-                            <Paginate totalPage={totalPage} page={page} showPerPage={showPerPage} onPageChange={::this.handlePageChane}/>
+                            <Paginate totalPage={totalPage} page={page} showPerPage={showPerPage} onPageChange={::this.handlePageChange}/>
                         </div>
                     }
                 </div>
