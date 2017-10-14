@@ -146,7 +146,16 @@ export default class DaftarSiswa extends React.Component {
     render() {
         let self = this;
         const {dataSiswa, totalPage, page, showPerPage, itemPerPage, onSearch, userDetail} = this.state;
+        const bg = ['blue', 'red', 'green', 'aqua', 'coral'];
+        let bgV = Math.floor((Math.random() * (bg.length - 1)));
+        const initialName = userDetail.nama != null ? userDetail.nama.slice(0,2).toUpperCase() : '';
         let datas = dataSiswa.map((siswa, index)=>{
+
+            let bgW = index;
+            if (index > bg.length - 1){
+                bgW = index%bg.length;
+            }
+            const initial = siswa.nama.slice(0,2).toUpperCase();
             return(
                 <div className="col-lg-4 col-sm-6" key={index}>
                     <div className="panel panel-flat">
@@ -178,10 +187,18 @@ export default class DaftarSiswa extends React.Component {
                         <div className="panel-body">
                             <div className="row">
                                 <div className="col-lg-3">
-                                    <img src={`${siswa.image}.png`} className="img-circle" style={{height: 50, width:50}}/>
+                                    <div className="img-circle" style={{height: 50,
+                                        width:50,
+                                        backgroundColor:bg[bgW],
+                                        textAlign: 'center',
+                                        margin: 'auto',
+                                        fontSize:30, paddingTop:3, color:'white'}}>
+                                        <div>{initial}</div>
+                                    </div>
+
                                 </div>
                                 <div className="col-lg-9" style={{overflow: "hidden"}}>
-                                    <div>{siswa.username}</div>
+                                    <div>{siswa.name}</div>
                                     <div>{siswa.email}</div>
                                     <div>{siswa.tanggal_lahir}</div>
                                 </div>
@@ -207,7 +224,6 @@ export default class DaftarSiswa extends React.Component {
                 <li><a onClick={()=>{this.changeItemPerPage(30)}}><i className="icon-stack-empty"/> 30 Item/Page</a></li>
             </ul>
         </li>);
-        console.log('ref cari', this.cari);
         return (
             <div>
                 <PageHeader icon=" icon-users position-left" text1="Daftar Siswa" breadcrumbElements={breadcrumbElements}>
@@ -275,7 +291,15 @@ t
 
                             <div className="modal-body">
                                 <div style={{textAlign:'center'}}>
-                                    <img src={`${userDetail.image}.png`} className="img-circle" style={{height: 150, width:150}}/>
+                                    <div className="img-circle" style={{height: 50,
+                                        width:50,
+                                        backgroundColor:bg[bgV],
+                                        textAlign: 'center',
+                                        margin: 'auto',
+                                        fontSize:30, paddingTop:3, color:'white'}}>
+                                        <div>{initialName}</div>
+                                    </div>
+
                                 </div>
 
                                 <form className="form-horizontal" action="#" style={{fontSize:16}}>
@@ -347,7 +371,14 @@ t
 
                             <div className="modal-body">
                                 <div style={{textAlign:'center'}}>
-                                    <img src={`${userDetail.image}.png`} className="img-circle" style={{height: 150, width:150}}/>
+                                    <div className="img-circle" style={{height: 50,
+                                        width:50,
+                                        backgroundColor:bg[bgV],
+                                        textAlign: 'center',
+                                        margin: 'auto',
+                                        fontSize:30, paddingTop:3, color:'white'}}>
+                                        <div>{initialName}</div>
+                                    </div>
                                 </div>
                                 <form className="form-horizontal" action="#" style={{fontSize:16}}>
                                     <div className="form-group" style={{marginBottom: 0}}>

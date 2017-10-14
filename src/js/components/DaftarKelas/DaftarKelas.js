@@ -8,13 +8,15 @@ import PageHeaderButton from '../PageHeader/PageHeaderButton';
 import axios from 'axios';
 import {API_BASE} from '../../utils';
 import { withRouter } from 'react-router';
+import EditKelas from './EditKelas';
 
 @withRouter
 export default class DaftarKelas extends React.Component {
   constructor() {
     super();
     this.state = {
-      DaftarKelas: []
+        DaftarKelas: [],
+        kelasDetail: {}
     }
   }
 
@@ -36,12 +38,41 @@ export default class DaftarKelas extends React.Component {
         });
   }
 
-  gotoDetail(kelas){
-      this.props.router.push('app/kelas/detail/'+kelas.id);
-  }
+    gotoDetail(kelas){
+          this.props.router.push('app/kelas/detail/'+kelas.id);
+    }
+
+    delete(kelas){
+        this.setState({
+            kelasDetail: kelas
+        });
+    }
+
+    edit(kelas){
+        this.setState({
+            kelasDetail: kelas
+        });
+    }
+
+    forceDelete(){
+        let self = this;
+        axios.delete(`${API_BASE}kelas/${this.state.kelasDetail.id}`).then(function (response) {
+            $('#modal_hapus').modal('hide');
+            self.ngambilData();
+        }).catch(function (error) {
+            console.log('error', error);
+            $('#modal_hapus').modal('hide');
+        });
+
+    }
+
+    onEditSuccess(){
+        $('#modal_edit').modal('hide');
+        this.ngambilData();
+    }
 
   render() {
-    const {DaftarKelas} = this.state;
+    const {DaftarKelas, kelasDetail} = this.state;
     let kelas = DaftarKelas.map((kelas, index)=>{
         const bg = ['blue', 'red', 'green', 'aqua', 'coral'];
         let bgW = index;
@@ -71,12 +102,14 @@ export default class DaftarKelas extends React.Component {
                                 </li>
                                 <li style={{color: "green"}}>
                                     <a>
-                                        <i className="icon-pencil5" data-toggle="modal" data-target="#modal_edit"/>
+                                        <i className="icon-pencil5" data-toggle="modal" data-target="#modal_edit"
+                                           onClick={()=>{this.edit(kelas)}}/>
                                     </a>
                                 </li>
                                 <li style={{color: "red"}}>
                                     <a>
-                                        <i className="icon-trash" data-toggle="modal" data-target="#modal_hapus"/>
+                                        <i className="icon-trash" data-toggle="modal" data-target="#modal_hapus"
+                                           onClick={()=>{this.delete(kelas)}}/>
                                     </a>
                                 </li>
                             </ul>
@@ -109,6 +142,64 @@ export default class DaftarKelas extends React.Component {
                 {kelas}
             </div>
         </div>
+          <div id="modal_hapus" className="modal fade">
+              <div className="modal-dialog">
+                  <div className="modal-content">
+                      <div className="modal-header">
+                          <button type="button" className="close" data-dismiss="modal">&times;</button>
+                          <h5 className="modal-title"><i className="icon-trash"/> &nbsp;Delete {kelasDetail.desc}</h5>
+                      </div>
+
+                      <div className="modal-body">
+                          <form className="form-horizontal" action="#" style={{fontSize:16}}>
+                              <div className="form-group" style={{marginBottom: 0}}>
+                                  <label className="col-lg-3 control-label">Name</label>
+                                  <div className="col-lg-9">
+                                      <div className="form-control-static">: {kelasDetail.nama}</div>
+                                  </div>
+                              </div>
+                              <div className="form-group" style={{marginBottom: 0}}>
+                                  <label className="col-lg-3 control-label">Deskripsi</label>
+                                  <div className="col-lg-9">
+                                      <div className="form-control-static">: {kelasDetail.desc}</div>
+                                  </div>
+                              </div>
+                              <div className="form-group" style={{marginBottom: 0}}>
+                                  <label className="col-lg-3 control-label">Tag</label>
+                                  <div className="col-lg-9">
+                                      <div className="form-control-static">: {kelasDetail.tag}</div>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+
+                      <div className="modal-footer">
+                          <button className="btn btn-link" data-dismiss="modal"><i className="icon-cross"/> Cancel</button>
+                          <button className="btn btn-danger" onClick={::this.forceDelete}><i className="icon-trash"/> Delete</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div id="modal_edit" className="modal fade">
+              <div className="modal-dialog">
+                  <div className="modal-content">
+                      <div className="modal-header">
+                          <button type="button" className="close" data-dismiss="modal">&times;</button>
+                          <h5 className="modal-title"><i className="icon-pencil5"/> &nbsp;Edit {kelasDetail.nama}</h5>
+                      </div>
+
+                      <div className="modal-body">
+                          <EditKelas kelasDetail={kelasDetail} onEditSuccess={::this.onEditSuccess}/>
+                      </div>
+
+                      <div className="modal-footer">
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+
       </div>
     );
   }

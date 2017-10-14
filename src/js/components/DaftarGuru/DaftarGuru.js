@@ -140,11 +140,18 @@ export default class DaftarGuru extends React.Component {
   }
 
   render() {
-
-    let self = this;
-
     const {dataGuru, totalPage, page, showPerPage, itemPerPage, onSearch, userDetail} = this.state;
+    let self = this;
+    const bg = ['blue', 'red', 'green', 'aqua', 'coral'];
+    let bgV = Math.floor((Math.random() * (bg.length - 1)));
+    const initialName = userDetail.nama != null ? userDetail.nama.slice(0,2).toUpperCase() : '';
+
     let datas = dataGuru.map((guru, index)=>{
+      let bgW = index;
+      if (index > bg.length - 1){
+        bgW = index%bg.length;
+      }
+      const initial = guru.nama.slice(0,2).toUpperCase();
       return(
         <div className="col-lg-4 col-sm-6" key={index}>
           <div className="panel panel-flat">
@@ -176,7 +183,14 @@ export default class DaftarGuru extends React.Component {
             <div className="panel-body">
               <div className="row">
                 <div className="col-lg-3">
-                  <img src={`${guru.image}.png`} className="img-circle" style={{height: 50, width:50}}/>
+                  <div className="img-circle" style={{height: 50,
+                    width:50,
+                    backgroundColor:bg[bgW],
+                    textAlign: 'center',
+                    margin: 'auto',
+                    fontSize:30, paddingTop:3, color:'white'}}>
+                    <div>{initial}</div>
+                  </div>
                 </div>
                 <div className="col-lg-9" style={{overflow: "hidden"}}>
                   <div>{guru.username}</div>
@@ -251,7 +265,6 @@ export default class DaftarGuru extends React.Component {
                 <button type="button" className="close" data-dismiss="modal">&times;</button>
                 <h5 className="modal-title"><i className="icon-pencil5"/> &nbsp;Edit {userDetail.nama}</h5>
               </div>
-              t
               <div className="modal-body">
                 <EditGuru guru={userDetail} onEditSuccess={::this.onEditSuccess}/>
               </div>
@@ -273,7 +286,14 @@ export default class DaftarGuru extends React.Component {
 
               <div className="modal-body">
                 <div style={{textAlign:'center'}}>
-                  <img src={`${userDetail.image}.png`} className="img-circle" style={{height: 150, width:150}}/>
+                  <div className="img-circle" style={{height: 50,
+                    width:50,
+                    backgroundColor:bg[bgV],
+                    textAlign: 'center',
+                    margin: 'auto',
+                    fontSize:30, paddingTop:3, color:'white'}}>
+                    <div>{initialName}</div>
+                  </div>
                 </div>
 
                 <form className="form-horizontal" action="#" style={{fontSize:16}}>
@@ -345,7 +365,14 @@ export default class DaftarGuru extends React.Component {
 
               <div className="modal-body">
                 <div style={{textAlign:'center'}}>
-                  <img src={`${userDetail.image}.png`} className="img-circle" style={{height: 150, width:150}}/>
+                  <div className="img-circle" style={{height: 50,
+                    width:50,
+                    backgroundColor:bg[bgV],
+                    textAlign: 'center',
+                    margin: 'auto',
+                    fontSize:30, paddingTop:3, color:'white'}}>
+                    <div>{initialName}</div>
+                  </div>
                 </div>
                 <form className="form-horizontal" action="#" style={{fontSize:16}}>
                   <div className="form-group" style={{marginBottom: 0}}>

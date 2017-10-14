@@ -70,6 +70,10 @@ export default class DetailKelas extends React.Component {
     render() {
         const {kelas, siswa, userDetail} = this.state;
         const bg = ['blue', 'red', 'green', 'aqua', 'coral'];
+
+        let bgV = Math.floor((Math.random() * bg.length - 1));
+        const initialName = userDetail.nama != null ? userDetail.nama.slice(0,2).toUpperCase() : '';
+
         const iconStyle = {
             height: 50,
             width:50,
@@ -80,6 +84,11 @@ export default class DetailKelas extends React.Component {
         };
 
         let datas = siswa.map((data, index)=>{
+            let bgW = index;
+            if (index > bg.length - 1){
+                bgW = index%bg.length;
+            }
+            const initial = data.nama.slice(0,2).toUpperCase();
             return(
                 <div className="col-lg-4 col-sm-6" key={index}>
                     <div className="panel panel-flat">
@@ -105,7 +114,14 @@ export default class DetailKelas extends React.Component {
                         <div className="panel-body">
                             <div className="row">
                                 <div className="col-lg-3">
-                                    <img src={`${data.image}.png`} className="img-circle" style={{height: 50, width:50}}/>
+                                    <div className="img-circle" style={{height: 50,
+                                        width:50,
+                                        backgroundColor:bg[bgW],
+                                        textAlign: 'center',
+                                        margin: 'auto',
+                                        fontSize:30, paddingTop:3, color:'white'}}>
+                                        <div>{initial}</div>
+                                    </div>
                                 </div>
                                 <div className="col-lg-9" style={{overflow: "hidden"}}>
                                     <div>{data.username}</div>
@@ -180,7 +196,14 @@ export default class DetailKelas extends React.Component {
 
                             <div className="modal-body">
                                 <div style={{textAlign:'center'}}>
-                                    <img src={`${userDetail.image}.png`} className="img-circle" style={{height: 150, width:150}}/>
+                                    <div className="img-circle" style={{height: 50,
+                                        width:50,
+                                        backgroundColor:bg[bgV],
+                                        textAlign: 'center',
+                                        margin: 'auto',
+                                        fontSize:30, paddingTop:3, color:'white'}}>
+                                        <div>{initialName}</div>
+                                    </div>
                                 </div>
 
                                 <form className="form-horizontal" action="#" style={{fontSize:16}}>
