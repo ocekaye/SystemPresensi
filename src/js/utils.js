@@ -23,6 +23,9 @@ export function saveAccount(account) {
     webStorage.setItem('desc', account.desc);
     webStorage.setItem('image', account.image);
     webStorage.setItem('email', account.email);
+    if (account.admin)
+        webStorage.setItem('admin', account.admin);
+    else webStorage.removeItem('admin');
 }
 
 export function getAccount() {
@@ -33,8 +36,11 @@ export function getAccount() {
         alamat: webStorage.getItem('alamat'),
         desc: webStorage.getItem('desc'),
         image: webStorage.getItem('image'),
-        email: webStorage.getItem('email')
+        email: webStorage.getItem('email'),
+        admin: webStorage.getItem('admin') === null ? false : true
     }
+
+    console.log('getAcount', account);
     return account;
 }
 

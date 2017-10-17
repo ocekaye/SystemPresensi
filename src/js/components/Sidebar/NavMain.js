@@ -12,6 +12,8 @@ import MenuItem from './item/MenuItem';
 import { connect } from "react-redux"
 import { fetchKelas } from "../../actions/kelasActions"
 
+import {getAccount} from '../../utils';
+
 @connect((store) => {
     return {
         kelas: store.kelas.kelas,
@@ -39,6 +41,7 @@ export default class NavMain extends React.Component {
 
     render() {
         const { kelas } = this.props;
+        const admin = getAccount().admin;
         let mKelas = [];
         if(kelas.length){
              mKelas = kelas.map((SKelas) => <MenuItem icon="icon-home8" name={SKelas.desc} to={"app/tugas/"+SKelas.id}/>);
@@ -58,54 +61,26 @@ export default class NavMain extends React.Component {
                             <MenuItem icon="icon-calendar2" name="Nilai UTS" to="app/nilai/page/uts"/>
                             <MenuItem icon="icon-calendar3" name="Nilai UAS" to="app/nilai/page/uas"/>
                         </MenuItemParent>
-                        <MenuItemParent icon="icon-stack-check" name="Presensi" >
-                            <MenuItemParent icon="icon-home8" name="Kelas 1" >
-                                <MenuItem icon="icon-book" name="Matematika" />
-                                <MenuItem icon="icon-book" name="B. Indonesia" />
-                                <MenuItem icon="icon-book" name="IPA" />
-                                <MenuItem icon="icon-book" name="IPS" />
-                            </MenuItemParent>
-                            <MenuItemParent icon="icon-home8" name="Kelas 2" >
-                                <MenuItem icon="icon-book" name="Matematika" />
-                                <MenuItem icon="icon-book" name="B. Indonesia" />
-                                <MenuItem icon="icon-book" name="IPA" />
-                                <MenuItem icon="icon-book" name="IPS" />
-                            </MenuItemParent>
-                            <MenuItemParent icon="icon-home8" name="Kelas 3" >
-                                <MenuItem icon="icon-book" name="Matematika" />
-                                <MenuItem icon="icon-book" name="B. Indonesia" />
-                                <MenuItem icon="icon-book" name="IPA" />
-                                <MenuItem icon="icon-book" name="IPS" />
-                            </MenuItemParent>
-                        </MenuItemParent>
 
                         <MenuItemParent icon="icon-clipboard2" name="Tugas" >
                             {mKelas}
                         </MenuItemParent>
+                        {admin ? <li className="navigation-header"><span>Manage</span> <i className="icon-menu" title="Manage"/></li> : null}
+                        {admin ? <MenuItemParent icon="icon-users4" name="Daftar Siswa">
+                            <MenuItem icon="icon-list2" name="Tampilkan Semua" to="app/siswa/tampil"/>
+                            <MenuItem icon="icon-plus-circle2" name="Tambah Siswa" to="app/siswa/tambah"/>
+                        </MenuItemParent> : null}
 
+                        {admin ? <MenuItemParent icon="icon-home8" name="Daftar Kelas">
+                            <MenuItem icon="icon-list2" name="Tampilkan Semua" to="app/kelas/tampil"/>
+                            <MenuItem icon="icon-plus-circle2" name="Tambah Kelas" to="app/kelas/tambah"/>
 
+                        </MenuItemParent> : null}
 
-                        <li className="navigation-header"><span>Manage</span> <i className="icon-menu" title="Manage"/></li>
-                        <MenuItemParent icon="icon-users4" name="Daftar Siswa">
-                          <MenuItem icon="icon-list2" name="Tampilkan Semua" to="app/siswa/tampil"/>
-                          <MenuItem icon="icon-plus-circle2" name="Tambah Siswa" to="app/siswa/tambah"/>
-                          </MenuItemParent>
-
-                      <MenuItemParent icon="icon-home8" name="Daftar Kelas">
-                        <MenuItem icon="icon-list2" name="Tampilkan Semua" to="app/kelas/tampil"/>
-                        <MenuItem icon="icon-plus-circle2" name="Tambah Kelas" to="app/kelas/tambah"/>
-
-                      </MenuItemParent>
-
-                      <MenuItemParent icon="icon-users" name="Daftar Guru">
-                        <MenuItem icon="icon-list2" name="Tampilkan Semua" to="app/guru/tampil"/>
-                        <MenuItem icon="icon-plus-circle2" name="Tambah Guru" to="app/guru/tambah"/>
-
-                      </MenuItemParent>
-
-
-                        <li className="navigation-header"><span>Info</span> <i className="icon-menu" title="Info"/></li>
-                        <MenuItem icon="icon-calendar52" name="Jadwal" to="app/jadwal"/>
+                        {admin ? <MenuItemParent icon="icon-users" name="Daftar Guru">
+                            <MenuItem icon="icon-list2" name="Tampilkan Semua" to="app/guru/tampil"/>
+                            <MenuItem icon="icon-plus-circle2" name="Tambah Guru" to="app/guru/tambah"/>
+                        </MenuItemParent> : null}
                     </ul>
                 </div>
             </div>
