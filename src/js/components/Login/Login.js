@@ -11,12 +11,30 @@ import { isLogin, baseUrl } from '../../utils';
 @withRouter
 @connect((state) => state)
 export default class Login extends React.Component {
+      state = {
+        login: false,
+        username: null,
+        password: null
+      }
+
+  handleValue(e){
+    switch (e.target.name){
+      case 'username':
+        this.setState({username: e.target.value});
+        break;
+      case 'password':
+        this.setState({password: e.target.value});
+        break;
+    }
+
+  }
+
 
     login(e){
 
         e.preventDefault();
         const {dispatch} =  this.props;
-        dispatch(login('busiti', '123')).then(function (id) {
+        dispatch(login(this.state.username, this.state.password)).then(function (id) {
             console.log('login page', id);
             dispatch(getAccount(id)).then(function (id) {
                 window.open(baseUrl, "_self");
@@ -39,14 +57,14 @@ export default class Login extends React.Component {
                                             <h5 className="content-group">Login to your account <small className="display-block">Enter your credentials below</small></h5>
                                         </div>
                                         <div className="form-group has-feedback has-feedback-left">
-                                            <input type="text" className="form-control" placeholder="Username" />
+                                            <input type="text" onChange={::this.handleValue} name="username" className="form-control" placeholder="Username" />
                                                 <div className="form-control-feedback">
                                                     <i className="icon-user text-muted"></i>
                                                 </div>
                                         </div>
 
                                         <div className="form-group has-feedback has-feedback-left">
-                                            <input type="password" className="form-control" placeholder="Password" />
+                                            <input type="password" onChange={::this.handleValue} name="password" className="form-control" placeholder="Password" />
                                                 <div className="form-control-feedback">
                                                     <i className="icon-lock2 text-muted"></i>
                                                 </div>
