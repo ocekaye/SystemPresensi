@@ -66,7 +66,8 @@ export default class Nilai extends React.Component {
         let tugas = <div>Pilih Kelas</div>;
         let kelas = dataKelas.map(({nama, desc, id}, i)=>{
             return(
-                <tr key={id} onClick={(e) => this.onKelasClick(id)} className={kelasSelect == id ? "nilai-kelas-select": "nilai-kelas"}>
+                <tr key={id} onClick={(e) => this.onKelasClick(id)}
+                    className={kelasSelect == id ? "nilai-kelas-select": "nilai-kelas"}>
                     <td>
                         <div className="media-left">
                             <div className=""><a className="text-default text-semibold">{desc}</a></div>
@@ -129,7 +130,8 @@ export default class Nilai extends React.Component {
                         </td>
                         <td>
                             <div className="media-left">
-                                <div className=""><a href="#" className="text-default text-semibold">{mapel.nama}</a></div>
+                                <div className=""><a href="#" className="text-default text-semibold">
+                                    {mapel.nama}</a></div>
                                 <div className="text-muted text-size-small">
                                     <span className="status-mark border-blue position-left"/>
                                     {mapel.desc}

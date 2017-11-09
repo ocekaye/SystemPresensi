@@ -16,8 +16,7 @@ export default class NavbarCollapse extends React.Component {
                 </ul>
 
                 <ul className="nav navbar-nav navbar-right">
-                    <DropdownLanguage/>
-                    <DropdownMessage/>
+
                     <DropdownProfile/>
                 </ul>
             </div>

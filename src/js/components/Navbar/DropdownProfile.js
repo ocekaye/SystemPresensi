@@ -32,10 +32,10 @@ export default class DropdownProfile extends React.Component {
                 </a>
 
                 <ul className="dropdown-menu dropdown-menu-right">
-                    <li><a href="#"><i className="icon-user-plus"/> My profile</a></li>
-                    <li><a href="#"><span className="badge bg-teal-400 pull-right">58</span> <i className="icon-comment-discussion" /> Messages</a></li>
-                    <li className="divider" />
-                    <li><a href="#"><i className="icon-cog5" /> Account settings</a></li>
+
+
+
+
                     <li onClick={() => this.logOut()}><a href="#"><i className="icon-switch2" /> Logout</a></li>
                 </ul>
             </li>

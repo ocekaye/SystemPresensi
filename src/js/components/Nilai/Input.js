@@ -87,7 +87,8 @@ export default class Input extends React.Component {
 
         return (
             <div className="content-wrapper col-lg-12">
-                <PageHeader icon="icon-bell2" text1={dataTugas ? "Nilai "+dataTugas.nama : "Nilai"} text2={dataTugas ? dataTugas.mapel.nama : null}/>
+                <PageHeader icon="icon-bell2" text1={dataTugas ? "Nilai "+dataTugas.nama : "Nilai"} text2={dataTugas ?
+                    dataTugas.mapel.nama : null}/>
                 <div className="content">
                     <div className="row">
                         <div className="col-lg-12">

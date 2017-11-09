@@ -68,7 +68,8 @@ export default class Jadwal extends React.Component {
                         {kelas.map(({desc, index}) => {
                             return (
                                 <div className="col-lg-3">
-                                <button key={index} type="button" className="btn border-slate text-slate-800 btn-flat" style={{marginRight:1, cursor:'default'}}>
+                                <button key={index} type="button" className="btn border-slate text-slate-800 btn-flat"
+                                        style={{marginRight:1, cursor:'default'}}>
                                     {desc}
                                 </button>
                                 </div>
@@ -82,7 +83,8 @@ export default class Jadwal extends React.Component {
         return (
             <div className="content-wrapper col-lg-12">
                 <PageHeader icon="icon-home4 position-left" text1="Tugas">
-                    <PageHeaderButton link="#/app/tugas/create" icon="icon-plus-circle2" iconColor="text-primary" text="New Tugas"/>
+                    <PageHeaderButton link="#/app/tugas/create" icon="icon-plus-circle2" iconColor="text-primary"
+                                      text="New Tugas"/>
                 </PageHeader>
                 <div className="content">
                     <div className="panel panel-flat">
